@@ -1,0 +1,3 @@
+app/repo.tgz
+app/sql
+container/files/etc/pki/tls/*
