@@ -7,10 +7,9 @@
   "files": [
     {
       "paths": [
-        "/var/log/syslog",
-        "/var/log/auth.log"
+        "/var/log/nginx/access.log"
        ],
-      "fields": { "type": "syslog" }
+      "fields": { "type": "nginx-access" }
     }
   ]
 }
