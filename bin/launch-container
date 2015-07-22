@@ -2,11 +2,10 @@
 
 CURRENT_DIR=$(readlink .)
 INSTALL_DIR=/srv/aims
-# docker start $(docker create \
-docker run -it \
+docker start $(docker create \
 	--name aims-node \
 	--link elk-server:logstash.example.org \
 	-v $CURRENT_DIR/../data/config:$INSTALL_DIR/application/config \
 	-v $CURRENT_DIR/../data/uploads:$INSTALL_DIR/uploads \
-	ihsw/aims-node \
-	/bin/bash
+	-p 8080:80 \
+	ihsw/aims-node)
