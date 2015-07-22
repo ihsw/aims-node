@@ -5,6 +5,7 @@ INSTALL_DIR=/srv/aims
 docker start $(docker create \
 	--name aims-node \
 	--link elk-server:logstash.example.org \
+	--link db \
 	-v $CURRENT_DIR/../data/config:$INSTALL_DIR/application/config \
 	-v $CURRENT_DIR/../data/uploads:$INSTALL_DIR/uploads \
 	-p 8080:80 \
