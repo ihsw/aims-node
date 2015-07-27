@@ -1,6 +1,6 @@
 #! /bin/bash
 
-CURRENT_DIR=$(readlink .)
+CURRENT_DIR=$(pwd)
 INSTALL_DIR=/srv/aims
 docker start $(docker create \
 	--name aims-node \
