@@ -7,7 +7,7 @@ ENV WKHTMLTOX_VERSION 0.12.2.1_linux-jessie-amd64
 RUN echo 'deb http://packages.elasticsearch.org/logstashforwarder/debian stable main' > /etc/apt/sources.list.d/logstash-forwarder.list
 RUN apt-get update && apt-get install -y nginx supervisor git logstash-forwarder wget \
   php5-fpm php5-mysql php5-gd php5-cli php5-mcrypt \
-  fontconfig xfonts-base xfonts-75dpi libxrender1
+  fontconfig xfonts-base xfonts-75dpi libxrender1 pdftk
 RUN wget -P /tmp http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-${WKHTMLTOX_VERSION}.deb && \
 	dpkg -i /tmp/wkhtmltox-${WKHTMLTOX_VERSION}.deb
 
@@ -44,7 +44,6 @@ COPY $FILES_DIR/etc/pki/tls/certs/logstash-forwarder.crt /etc/pki/tls/certs/logs
 
 # pdf setup
 RUN ln -s /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
-COPY $FILES_DIR/usr/bin/pdftk /usr/bin/pdftk
 
 ### RUNNING IT OUT ###
 CMD ["supervisord", "-n"]
