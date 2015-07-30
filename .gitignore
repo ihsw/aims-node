@@ -1,3 +1,4 @@
 app/repo.tgz
 app/sql
 container/files/etc/pki/tls/*
+container/files/usr/bin/pdftk
