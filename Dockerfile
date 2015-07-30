@@ -2,9 +2,14 @@ FROM debian
 
 RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 46095ACC8548582C1A2699A9D27D666CD88E42B4
 
+ENV WKHTMLTOX_VERSION 0.12.2.1_linux-jessie-amd64
+
 RUN echo 'deb http://packages.elasticsearch.org/logstashforwarder/debian stable main' > /etc/apt/sources.list.d/logstash-forwarder.list
-RUN apt-get update && apt-get install -y nginx supervisor git logstash-forwarder \
-  php5-fpm php5-mysql php5-gd php5-cli php5-mcrypt
+RUN apt-get update && apt-get install -y nginx supervisor git logstash-forwarder wget \
+  php5-fpm php5-mysql php5-gd php5-cli php5-mcrypt \
+  fontconfig xfonts-base xfonts-75dpi libxrender1
+RUN wget -P /tmp http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-${WKHTMLTOX_VERSION}.deb && \
+	dpkg -i /tmp/wkhtmltox-${WKHTMLTOX_VERSION}.deb
 
 EXPOSE 80
 
@@ -36,6 +41,9 @@ RUN rm /etc/nginx/sites-enabled/default
 # logstash-forwarder setup
 COPY $FILES_DIR/etc/logstash-forwarder.json /etc/logstash-forwarder.json
 COPY $FILES_DIR/etc/pki/tls/certs/logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
+
+# wkhtmltopdf setup
+RUN ln -s /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
 
 ### RUNNING IT OUT ###
 CMD ["supervisord", "-n"]
