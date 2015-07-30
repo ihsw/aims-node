@@ -42,8 +42,9 @@ RUN rm /etc/nginx/sites-enabled/default
 COPY $FILES_DIR/etc/logstash-forwarder.json /etc/logstash-forwarder.json
 COPY $FILES_DIR/etc/pki/tls/certs/logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
 
-# wkhtmltopdf setup
+# pdf setup
 RUN ln -s /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+COPY $FILES_DIR/usr/bin/pdftk /usr/bin/pdftk
 
 ### RUNNING IT OUT ###
 CMD ["supervisord", "-n"]
