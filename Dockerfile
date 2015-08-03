@@ -39,7 +39,7 @@ RUN cd /srv/aims-interval && composer install
 ### SUPPORTIVE SERVICES ###
 ENV FILES_DIR ./container/files
 
-# path resolution 
+# path resolution
 ENV PATH /opt/logstash-forwarder/bin:$PATH
 
 # supervisor setup
