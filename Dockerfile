@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y nginx supervisor git logstash-forwarder
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 # wkhtmltopdf
-RUN wget -P /tmp http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 && \
+RUN wget -P /tmp http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-${WKHTMLTOX_VERSION}.tar.bz2 && \
 	tar -C /usr/local/etc -xjf /tmp/wkhtmltopdf-${WKHTMLTOX_VERSION}.tar.bz2 && \
 	ln -s /usr/local/etc/wkhtmltopdf-amd64 /usr/bin/wkhtmltopdf
 
