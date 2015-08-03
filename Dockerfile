@@ -4,7 +4,6 @@ EXPOSE 80
 
 ### ENVIRONMENT SETUP ###
 # versioning
-# ENV WKHTMLTOX_VERSION 0.12.2.1_linux-jessie-amd64
 ENV WKHTMLTOX_VERSION 0.11.0_rc1-static-amd64
 
 # importing apt-keys and sources
@@ -20,8 +19,6 @@ RUN apt-get update && apt-get install -y nginx supervisor git logstash-forwarder
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 # wkhtmltopdf
-# RUN wget -P /tmp http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-${WKHTMLTOX_VERSION}.deb && \
-	# dpkg -i /tmp/wkhtmltox-${WKHTMLTOX_VERSION}.deb
 RUN wget -P /tmp http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 && \
 	tar -C /usr/local/etc -xjf /tmp/wkhtmltopdf-${WKHTMLTOX_VERSION}.tar.bz2 && \
 	ln -s /usr/local/etc/wkhtmltopdf-amd64 /usr/bin/wkhtmltopdf
