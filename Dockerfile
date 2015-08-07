@@ -12,7 +12,7 @@ RUN echo 'deb http://packages.elasticsearch.org/logstashforwarder/debian stable 
 
 # apt-get install
 RUN apt-get update && apt-get install -y nginx supervisor git logstash-forwarder wget curl bzip2 \
-  php5-fpm php5-mysql php5-gd php5-cli php5-mcrypt \
+  php5-fpm php5-mysql php5-gd php5-cli php5-mcrypt php5-curl \
   fontconfig xfonts-base xfonts-75dpi libxrender1 pdftk
 
 # composer
