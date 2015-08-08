@@ -9,7 +9,7 @@
       "paths": [
         "/var/log/nginx/access.log"
        ],
-      "fields": { "type": "nginx-access" }
+      "fields": { "type": "nginx-access", "server-role": "aims-node" }
     }
   ]
 }
